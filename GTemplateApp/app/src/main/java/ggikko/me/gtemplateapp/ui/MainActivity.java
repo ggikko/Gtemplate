@@ -4,12 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ggikko.me.gtemplateapp.R;
+import ggikko.me.gtemplateapp.model.translate.service.TranslateService;
 import ggikko.me.gtemplateapp.ui.base.InjectionActivity;
 
 public class MainActivity extends InjectionActivity {
+
+    @Inject TranslateService mTranslateService;
 
     @OnClick({R.id.next})
     void callOnClick(View view){

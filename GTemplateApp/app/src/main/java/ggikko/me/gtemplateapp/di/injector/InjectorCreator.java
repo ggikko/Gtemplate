@@ -8,7 +8,9 @@ import ggikko.me.gtemplateapp.di.component.FragmentComponent;
 import ggikko.me.gtemplateapp.di.module.ActivityModule;
 import ggikko.me.gtemplateapp.di.module.ApplicationModule;
 import ggikko.me.gtemplateapp.di.module.FragmentModule;
+import ggikko.me.gtemplateapp.di.module.network.NetworkModule;
 import ggikko.me.gtemplateapp.ui.base.InjectionActivity;
+import ggikko.me.gtemplateapp.util.api.ConstantApi;
 
 public class InjectorCreator {
 
@@ -17,6 +19,7 @@ public class InjectorCreator {
     public ApplicationInjector makeApplicationInjector(GgikkoApplication application) {
         applicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(application))
+                .networkModule(new NetworkModule(ConstantApi.DEV_URL))
                 .build();
         return new ApplicationInjector(applicationComponent);
     }

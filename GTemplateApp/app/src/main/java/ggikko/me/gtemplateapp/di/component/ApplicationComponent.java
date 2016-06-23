@@ -5,12 +5,13 @@ import dagger.Component;
 import ggikko.me.gtemplateapp.GgikkoApplication;
 import ggikko.me.gtemplateapp.di.module.ActivityModule;
 import ggikko.me.gtemplateapp.di.module.ApplicationModule;
+import ggikko.me.gtemplateapp.di.module.network.NetworkModule;
 
 /**
  * Application component -> Activity component -> Fragment component
  */
 @Singleton
-@Component(modules = {ApplicationModule.class})
+@Component(modules = {ApplicationModule.class, NetworkModule.class})
 public interface ApplicationComponent {
 
     ActivityComponent plusActivityComponent(ActivityModule activityModule);
