@@ -37,8 +37,8 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    GsonConverterFactory provideGsonConverterFactory(){
-        return GsonConverterFactory.create();
+    GsonConverterFactory provideGsonConverterFactory(Gson gson){
+        return GsonConverterFactory.create(gson);
     }
 
     @Provides
@@ -55,7 +55,7 @@ public class NetworkModule {
     @Provides
     @Singleton
     public Gson providesGson() {
-        return new GsonBuilder().serializeNulls().create();
+        return new GsonBuilder().setLenient().serializeNulls().create();
     }
 
     //logging
