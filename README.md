@@ -2,6 +2,8 @@
 
 Dagger + mvp + rxjava template for new things
 
+injector + base activity + base presenter
+
   # Libraries 
 
     compile 'com.android.support:appcompat-v7:24.0.0'
