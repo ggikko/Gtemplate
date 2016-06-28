@@ -1,9 +1,11 @@
 package ggikko.me.gtemplateapp.ui.welcome;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -17,6 +19,8 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class SplashActivity extends InjectionActivity {
+
+    private static String TAG = "ggikko";
 
     private ReactiveNetwork reactiveNetwork;
     private Subscription connectivitySubscription;
@@ -38,7 +42,20 @@ public class SplashActivity extends InjectionActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        //version check
+        versionCheck();
+        //network check
         checkNetworkStatus();
+    }
+
+    private void versionCheck() {
+        try {
+            //TODO : check version from server or google store/package name
+            String device_version = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+            Log.e(TAG,"device_version : " + device_version);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     private void checkNetworkStatus() {
@@ -69,5 +86,11 @@ public class SplashActivity extends InjectionActivity {
         startActivity(new Intent(SplashActivity.this, MainActivity.class));
         NETWORKING_FLAG = true;
         finish();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(dialog!=null) dialog.dismiss();
     }
 }
