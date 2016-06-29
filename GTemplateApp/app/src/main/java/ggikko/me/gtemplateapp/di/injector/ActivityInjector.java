@@ -5,6 +5,9 @@ import ggikko.me.gtemplateapp.ui.base.InjectionActivity;
 import ggikko.me.gtemplateapp.ui.MainActivity;
 import lombok.Getter;
 
+/**
+ * activity injector
+ */
 public class ActivityInjector {
 
     @Getter

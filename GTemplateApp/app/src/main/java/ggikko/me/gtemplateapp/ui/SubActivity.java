@@ -8,6 +8,7 @@ import ggikko.me.gtemplateapp.ui.base.InjectionActivity;
 
 public class SubActivity extends InjectionActivity {
 
+    //sample
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

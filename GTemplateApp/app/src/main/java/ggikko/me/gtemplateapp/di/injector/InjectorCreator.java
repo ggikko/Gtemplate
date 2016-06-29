@@ -10,8 +10,12 @@ import ggikko.me.gtemplateapp.di.module.ApplicationModule;
 import ggikko.me.gtemplateapp.di.module.FragmentModule;
 import ggikko.me.gtemplateapp.di.module.network.NetworkModule;
 import ggikko.me.gtemplateapp.ui.base.InjectionActivity;
+import ggikko.me.gtemplateapp.ui.base.InjectionFragment;
 import ggikko.me.gtemplateapp.util.api.ConstantApi;
 
+/**
+ * injector creator for application, activity, fragment
+ */
 public class InjectorCreator {
 
     private ApplicationComponent applicationComponent;

@@ -14,6 +14,7 @@ import ggikko.me.gtemplateapp.ui.base.InjectionActivity;
 
 public class MainActivity extends InjectionActivity {
 
+    //sample
     @Inject TranslateService mTranslateService;
 
     @OnClick({R.id.next})

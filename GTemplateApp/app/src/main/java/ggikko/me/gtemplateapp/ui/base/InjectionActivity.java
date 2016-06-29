@@ -23,6 +23,9 @@ import ggikko.me.gtemplateapp.R;
 import ggikko.me.gtemplateapp.di.injector.ActivityInjector;
 import lombok.Getter;
 
+/**
+ * activity for injection, appcompat Activity
+ */
 public class InjectionActivity extends AppCompatActivity {
 
     /** static constant */
@@ -44,11 +47,26 @@ public class InjectionActivity extends AppCompatActivity {
     @Getter
     private ActivityInjector activityInjector;
 
+    //life cycler in activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         inject();
         super.onCreate(savedInstanceState);
     }
+
+    @Override
+    protected void onResume() {
+        stopped = false;
+        super.onResume();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(unbinder!=null) unbinder.unbind();
+        if(baseUnbider!=null) baseUnbider.unbind();
+    }
+
 
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
@@ -67,21 +85,6 @@ public class InjectionActivity extends AppCompatActivity {
         finish();
         return true;
     }
-
-    @Override
-    protected void onResume() {
-        stopped = false;
-        super.onResume();
-    }
-
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if(unbinder!=null) unbinder.unbind();
-        if(baseUnbider!=null) baseUnbider.unbind();
-    }
-
     /** dialog */
     public void showLoading() {
         hideLoading();

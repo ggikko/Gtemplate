@@ -9,6 +9,9 @@ import ggikko.me.gtemplateapp.di.qualifier.PerActivity;
 import ggikko.me.gtemplateapp.ui.MainActivity;
 import retrofit2.Retrofit;
 
+/**
+ * activity component
+ */
 @PerActivity
 @Subcomponent(modules = {ActivityModule.class, ApiModule.class})
 public interface ActivityComponent {

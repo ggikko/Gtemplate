@@ -50,7 +50,7 @@ public class SplashActivity extends InjectionActivity {
 
     private void versionCheck() {
         try {
-            //TODO : check version from server or google store/package name
+            //TODO : check version from server or google store/package name .. VERSION NAME = MAJOR.MID.MINOR
             String device_version = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
             Log.e(TAG,"device_version : " + device_version);
         } catch (PackageManager.NameNotFoundException e) {

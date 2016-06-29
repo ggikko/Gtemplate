@@ -5,7 +5,9 @@ import android.util.Log;
 import ggikko.me.gtemplateapp.GgikkoApplication;
 
 /**
- * Created by admin on 16. 6. 23..
+ * Created by ggikko on 16. 6. 23..
+ * app log for intercenter and etc...
+ * TODO : add other log module.
  */
 public class AppLog {
 
