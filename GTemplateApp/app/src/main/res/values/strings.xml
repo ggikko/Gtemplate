@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">GTemplateApp</string>
 
+    <!-- drawer -->
+    <string name="acc_drawer_open">open</string>
+    <string name="acc_drawer_close">close</string>
+
     <!-- splash activity -->
     <string name="splash_popup1">네트워크 연결</string>
     <string name="splash_popup2">이 서비스는 네트워크 연결이 필요합니다.</string>
