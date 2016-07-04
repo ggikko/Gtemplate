@@ -1,5 +1,6 @@
 package ggikko.me.gtemplateapp.ui.base;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -12,6 +13,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import javax.inject.Inject;
 
@@ -123,6 +126,18 @@ public class InjectionActivity extends AppCompatActivity {
 
     public boolean isActive() {
         return !stopped;
+    }
+
+
+    /**
+     * hide keyboard
+     */
+    protected void hideKeyboard() {
+        View view = getCurrentFocus();
+        if (view != null) {
+            ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).
+                    hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
     }
 
 }
