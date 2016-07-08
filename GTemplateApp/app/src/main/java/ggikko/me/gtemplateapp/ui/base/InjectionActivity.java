@@ -50,7 +50,10 @@ public class InjectionActivity extends AppCompatActivity {
     @Getter
     private ActivityInjector activityInjector;
 
-    //life cycler in activity
+    /**
+     * onCreate
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         inject();
@@ -77,6 +80,7 @@ public class InjectionActivity extends AppCompatActivity {
         baseUnbider = ButterKnife.bind(this);
     }
 
+    /** inject */
     private void inject() {
         final GgikkoApplication application = ((GgikkoApplication) getApplication());
         activityInjector = application.getInjectorCreator().makeActivityInjector(this);
@@ -96,6 +100,7 @@ public class InjectionActivity extends AppCompatActivity {
         buildNewLoadingDialog().show();
     }
 
+    /** common progressbar hide */
     public void hideLoading() {
         Log.e("ggikko","hide");
         if (isDialogShowing()) {
@@ -109,10 +114,12 @@ public class InjectionActivity extends AppCompatActivity {
         }
     }
 
+    /** common progressbar checking */
     boolean isDialogShowing() {
         return dialogVisible;
     }
 
+    /** common progressbar show */
     AlertDialog buildNewLoadingDialog() {
         loadingDialog = new AlertDialog.Builder(this)
                 .setView(R.layout.dialog_loading)
@@ -124,6 +131,7 @@ public class InjectionActivity extends AppCompatActivity {
         return loadingDialog;
     }
 
+    /** common active checking */
     public boolean isActive() {
         return !stopped;
     }
@@ -139,5 +147,7 @@ public class InjectionActivity extends AppCompatActivity {
                     hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         }
     }
+
+    // TODO : should make common module for navigating in BaseActivity
 
 }

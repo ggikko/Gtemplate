@@ -22,6 +22,7 @@ public class InjectionFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    /** inject */
     private void inject() {
         final GgikkoApplication application = ((GgikkoApplication) getActivity().getApplication());
         fragmentInjector = application.getInjectorCreator().makeFragmentInjector(this);

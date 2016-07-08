@@ -6,6 +6,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import ggikko.me.gtemplateapp.ui.base.main.fragment.TemplateFragment;
 
+/**
+ * section pager, 페이지 어답터
+ */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     public SectionsPagerAdapter(FragmentManager fm) {
