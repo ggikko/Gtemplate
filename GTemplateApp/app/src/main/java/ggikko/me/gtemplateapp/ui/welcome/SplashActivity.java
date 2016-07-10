@@ -30,6 +30,9 @@ public class SplashActivity extends InjectionActivity {
     private boolean NETWORKING_FLAG = true;
     private MaterialDialog dialog;
 
+    /**
+     * binding resource
+     */
     @BindString(R.string.splash_popup1) String splash_popup1;
     @BindString(R.string.splash_popup2) String splash_popup2;
     @BindString(R.string.splash_popup3) String splash_popup3;
