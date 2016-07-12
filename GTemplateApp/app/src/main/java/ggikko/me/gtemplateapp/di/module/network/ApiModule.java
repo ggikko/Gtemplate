@@ -12,6 +12,11 @@ import retrofit2.Retrofit;
 @Module
 public class ApiModule {
 
+    /**
+     * Sample Translate Service
+     * @param retrofit
+     * @return
+     */
     @Provides
     @PerActivity
     TranslateService provideTranslateService(Retrofit retrofit){

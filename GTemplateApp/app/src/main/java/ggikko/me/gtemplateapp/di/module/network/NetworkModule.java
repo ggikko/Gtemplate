@@ -29,17 +29,27 @@ public class NetworkModule {
         mBaseUrl = baseUrl;
     }
 
+    /**
+     * Rx Factory
+     * @return
+     */
     @Provides
     @Singleton
     RxJavaCallAdapterFactory provideRxJavaCallAdapterFactory(){
         return RxJavaCallAdapterFactory.create();
     }
 
+    /**
+     * Gson Factory
+     * @param gson
+     * @return
+     */
     @Provides
     @Singleton
     GsonConverterFactory provideGsonConverterFactory(Gson gson){
         return GsonConverterFactory.create(gson);
     }
+
 
     @Provides
     @Singleton

@@ -11,7 +11,8 @@ import ggikko.me.gtemplateapp.GgikkoApplication;
 
 
 @Module
-public class TestApplicationModule {
+public class TestApplicationModule
+{
     private final GgikkoApplication application;
 
     public TestApplicationModule(GgikkoApplication application) {

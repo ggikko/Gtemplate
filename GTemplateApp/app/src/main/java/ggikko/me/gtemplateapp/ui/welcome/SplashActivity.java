@@ -61,9 +61,11 @@ public class SplashActivity extends InjectionActivity {
             Log.e(TAG,"device_version : " + device_version);
 
             //TODO : Devide Id checking 100%보장할 수 없으므로.  Proyo 2.2 이전 Version 에는 100% 디바이스 고유 번호를 획득 한다고는 보장못함. 섞어봐야하나?
-            TelephonyManager manager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-            manager.getDeviceId();
-            String androidId = Settings.Secure.ANDROID_ID;
+//            TelephonyManager manager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+//            manager.getDeviceId();
+//            String androidId = Settings.Secure.ANDROID_ID;
+
+            String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
 
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();

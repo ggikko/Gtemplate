@@ -10,8 +10,12 @@ import ggikko.me.gtemplateapp.ui.BaseTestSupport;
  */
 public class TestInjectorCreatorTest extends BaseTestSupport {
 
+    /**
+     * Injection이 잘 되는지 테스트
+     * @throws Exception
+     */
     @Test
-    public void test() throws Exception{
+    public void testInjection() throws Exception{
 
     }
 }
