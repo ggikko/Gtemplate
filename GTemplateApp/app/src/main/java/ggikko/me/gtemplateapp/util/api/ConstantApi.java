@@ -10,4 +10,5 @@ public class ConstantApi {
     public static String DEV_URL = "http://www.ggikko.com";
 
     //real
+    public static final String RELEASE_URL = "https://openapi.naver.com/";
 }
