@@ -6,9 +6,8 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by admin on 16. 7. 13..
  */
-public class Result {
-
-    @SerializedName("translatedText")
+public class TranslateResponse {
+    @SerializedName("message")
     @Expose
-    public String translatedText;
+    public Message message;
 }

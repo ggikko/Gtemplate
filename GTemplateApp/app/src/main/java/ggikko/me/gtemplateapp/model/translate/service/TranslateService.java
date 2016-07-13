@@ -1,6 +1,7 @@
 package ggikko.me.gtemplateapp.model.translate.service;
 
-import ggikko.me.gtemplateapp.model.translate.dto.TranslatedTextResponse;
+
+import ggikko.me.gtemplateapp.model.translate.dto.TranslateResponse;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Header;
@@ -19,6 +20,6 @@ public interface TranslateService {
             "X-Naver-Client-Secret : obxUtFxrRE"
     })
     @POST("v1/language/translate")
-    Observable<TranslatedTextResponse> translate(@Header("X-Naver-Client-Id") String id, @Header("X-Naver-Client-Secret") String secret, @Field("source") String source, @Field("target") String target, @Field("text") String text);
+    Observable<TranslateResponse> translate(@Field("source") String source, @Field("target") String target, @Field("text") String text);
 
 }
