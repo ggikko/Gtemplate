@@ -12,7 +12,6 @@ import javax.inject.Inject;
 import ggikko.me.gtemplateapp.data.DaggerTestApiComponent;
 import ggikko.me.gtemplateapp.data.DaggerTestNetworkComponent;
 import ggikko.me.gtemplateapp.data.TestNetworkComponent;
-import ggikko.me.gtemplateapp.di.module.TestNetworkModule;
 import ggikko.me.gtemplateapp.di.module.network.NetworkModule;
 import ggikko.me.gtemplateapp.model.translate.dto.TranslateResponse;
 import ggikko.me.gtemplateapp.model.translate.service.TranslateService;
@@ -22,16 +21,14 @@ import rx.observers.TestSubscriber;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Created by admin on 16. 7. 13..
+ * Created by ggikko on 16. 7. 13..
  */
 public class TestTranslateService {
 
-    @Inject
-    TranslateService translateService;
+    @Inject TranslateService translateService;
 
     @Before
     public void setup() {
-
         //dagger inject
         DaggerTestApiComponent
                 .builder()
@@ -62,5 +59,6 @@ public class TestTranslateService {
         Stream.of(translatedTextItems).forEach(value -> {
             assertThat(value.message.equals("안녕하세요."));
         });
+
     }
 }
