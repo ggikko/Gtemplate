@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import ggikko.me.gtemplateapp.R;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A sample {@link Fragment} subclass.
  */
 public class TemplateFragment extends Fragment {
 

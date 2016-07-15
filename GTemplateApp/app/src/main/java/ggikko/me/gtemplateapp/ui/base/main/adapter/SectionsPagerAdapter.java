@@ -15,6 +15,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         super(fm);
     }
 
+    //items
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
@@ -24,11 +25,13 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         }
     }
 
+    //page count
     @Override
     public int getCount() {
         return 4;
     }
 
+    //title
     @Override
     public CharSequence getPageTitle(int position) {
         switch (position) {

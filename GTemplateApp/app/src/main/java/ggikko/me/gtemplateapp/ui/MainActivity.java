@@ -48,11 +48,14 @@ public class MainActivity extends InjectionActivity {
         setContentView(R.layout.activity_main);
         unbinder = ButterKnife.bind(this);
 
+        //UI
         initUi();
+        //DRAWER
         initDrawer();
 
     }
 
+    //Toolbar setting
     public void initUi() {
         setSupportActionBar(toolbar);
         setupTabs();
@@ -61,6 +64,7 @@ public class MainActivity extends InjectionActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
+    //Tab layout Setting
     private void setupTabs() {
         final ViewPager viewPager = (ViewPager) findViewById(R.id.container);
         viewPager.setAdapter(new SectionsPagerAdapter(getSupportFragmentManager()));
@@ -96,11 +100,12 @@ public class MainActivity extends InjectionActivity {
         });
     }
 
-
+    //Icons in tab
     private View getCustomIcon(int resId, int alpha){
         return getCustomIcon(AppCompatDrawableManager.get().getDrawable(tabLayout.getContext(), resId), alpha);
     }
 
+    //Icons in tab
     private View getCustomIcon(int resId){
         return getCustomIcon(AppCompatDrawableManager.get().getDrawable(tabLayout.getContext(), resId), 255);
     }

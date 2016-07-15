@@ -14,6 +14,7 @@ import rx.Observable;
  */
 public interface TranslateService {
 
+    //naver open api - translator sample
     @FormUrlEncoded
     @Headers({
             "X-Naver-Client-Id : hCh1RB6l31fbKNmOXjRr",
