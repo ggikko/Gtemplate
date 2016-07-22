@@ -3,6 +3,7 @@ package ggikko.me.gtemplateapp.ui.base;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
@@ -15,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
 
 import javax.inject.Inject;
 
@@ -146,6 +148,18 @@ public class InjectionActivity extends AppCompatActivity {
             ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).
                     hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         }
+    }
+
+    /**
+     * textview kindof에 따라 text type bold, Italic, BoldItalic, Normal 선택 지정
+     * @param kindof
+     * @param textViews
+     */
+    public void setTextTypeBold(String kindof, TextView... textViews){
+        if(kindof.equals("bold")) for(TextView textView : textViews) textView.setTypeface(null, Typeface.BOLD);
+        if(kindof.equals("italic")) for(TextView textView : textViews) textView.setTypeface(null, Typeface.ITALIC);
+        if(kindof.equals("bolditalic")) for(TextView textView : textViews) textView.setTypeface(null, Typeface.BOLD_ITALIC);
+        if(kindof.equals("normal")) for(TextView textView : textViews) textView.setTypeface(null, Typeface.NORMAL);
     }
 
     // TODO : should make common module for navigating in BaseActivity
