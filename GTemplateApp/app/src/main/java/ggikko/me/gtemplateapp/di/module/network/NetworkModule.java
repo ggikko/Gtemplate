@@ -50,7 +50,12 @@ public class NetworkModule {
         return GsonConverterFactory.create(gson);
     }
 
-
+    /**
+     * Gson factor, Convert Rx
+     * @param gsonConverterFactory
+     * @param rxJavaCallAdapterFactory
+     * @return
+     */
     @Provides
     @Singleton
     Retrofit provideRetrofit(GsonConverterFactory gsonConverterFactory, RxJavaCallAdapterFactory rxJavaCallAdapterFactory) {
@@ -68,7 +73,12 @@ public class NetworkModule {
         return new GsonBuilder().setLenient().serializeNulls().create();
     }
 
-    //logging
+
+    /**
+     * Okhttp logging intercepter
+     * @param sharedPreferences
+     * @return
+     */
     @Provides
     @Singleton
     public OkHttpClient providesOkHttpClient(SharedPreferences sharedPreferences) {

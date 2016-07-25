@@ -12,7 +12,10 @@ import dagger.Provides;
 import ggikko.me.gtemplateapp.GgikkoApplication;
 import ggikko.me.gtemplateapp.util.auth.AuthorizationUtil;
 
-
+/**
+ * Application module
+ * TODO : Realm etc
+ */
 @Module
 public class ApplicationModule {
     private final GgikkoApplication application;

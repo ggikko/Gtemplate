@@ -20,6 +20,7 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
+//TODO network status 바꾸기
 public class SplashActivity extends InjectionActivity {
 
     private static String TAG = "ggikko";
@@ -64,7 +65,6 @@ public class SplashActivity extends InjectionActivity {
 //            TelephonyManager manager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 //            manager.getDeviceId();
 //            String androidId = Settings.Secure.ANDROID_ID;
-
             String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
 
         } catch (PackageManager.NameNotFoundException e) {

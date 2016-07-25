@@ -8,6 +8,10 @@ import dagger.Module;
 import dagger.Provides;
 import ggikko.me.gtemplateapp.di.qualifier.PerActivity;
 
+/**
+ * Activity module
+ * TODO : formatter etc..
+ */
 @Module
 public class ActivityModule {
     private final Activity activity;

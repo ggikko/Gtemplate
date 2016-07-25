@@ -4,6 +4,9 @@ import ggikko.me.gtemplateapp.GgikkoApplication;
 import ggikko.me.gtemplateapp.di.component.ApplicationComponent;
 import lombok.Getter;
 
+/**
+ * Application Injector
+ */
 public class ApplicationInjector {
 
     @Getter

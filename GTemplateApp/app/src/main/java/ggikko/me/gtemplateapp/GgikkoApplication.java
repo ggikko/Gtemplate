@@ -9,7 +9,7 @@ import ggikko.me.gtemplateapp.di.injector.InjectorCreator;
 import lombok.Getter;
 
 /**
- * Created by admin on 16. 6. 23..
+ * Created by ggikko on 16. 6. 23..
  */
 public class GgikkoApplication extends Application {
 

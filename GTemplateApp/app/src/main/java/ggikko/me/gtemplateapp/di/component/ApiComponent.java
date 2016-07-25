@@ -8,6 +8,10 @@ import ggikko.me.gtemplateapp.ui.MainActivity;
 /**
  * Created by ggikko on 16. 5. 25..
  */
+
+/**
+ * API Component
+ */
 @PerActivity
 @Component(modules = ApiModule.class, dependencies = NetworkComponent.class)
 public interface ApiComponent {

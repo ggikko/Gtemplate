@@ -62,12 +62,20 @@ public class InjectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
     }
 
+    /**
+     * life cycler
+     * onResume
+     */
     @Override
     protected void onResume() {
         stopped = false;
         super.onResume();
     }
 
+    /**
+     * life cycler
+     * onDestroy
+     */
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -75,7 +83,10 @@ public class InjectionActivity extends AppCompatActivity {
         if(baseUnbider!=null) baseUnbider.unbind();
     }
 
-
+    /**
+     * layout binding
+     * view binding - Butter knife
+     */
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
@@ -89,11 +100,16 @@ public class InjectionActivity extends AppCompatActivity {
         activityInjector.inject(this);
     }
 
+    /**
+     * navi up
+     * @return
+     */
     @Override
     public boolean onSupportNavigateUp() {
         finish();
         return true;
     }
+
     /** dialog */
     public void showLoading() {
         hideLoading();

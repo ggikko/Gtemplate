@@ -7,6 +7,9 @@ import dagger.Module;
 import dagger.Provides;
 import ggikko.me.gtemplateapp.di.qualifier.PerFragment;
 
+/**
+ * Fragment module
+ */
 @Module
 public class FragmentModule {
     private final Fragment fragment;

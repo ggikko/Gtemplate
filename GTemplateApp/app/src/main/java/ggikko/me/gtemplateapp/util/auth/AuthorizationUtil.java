@@ -3,8 +3,9 @@ package ggikko.me.gtemplateapp.util.auth;
 import android.content.SharedPreferences;
 
 /**
- * Created by admin on 16. 7. 12..
+ * Created by ggikko on 16. 7. 12..
  */
+//TODO : 임시용도에서 -> 쓸모있는 util로..
 public class AuthorizationUtil {
 
     private SharedPreferences mSharedPreferences;
