@@ -8,15 +8,19 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.NavUtils;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -180,4 +184,44 @@ public class InjectionActivity extends AppCompatActivity {
 
     // TODO : should make common module for navigating in BaseActivity
 
+    /**
+     * snack bar
+     * @param view
+     * @param messageResId
+     * @param duration
+     */
+    protected void snack(View view, @StringRes int messageResId, @Snackbar.Duration int duration) {
+        if (view != null) Snackbar.make(view, messageResId, duration).show();
+    }
+
+    /**
+     * Toast with String ref
+     * @param messageResId
+     * @param duration
+     */
+    protected void toast(@StringRes int messageResId, int duration) {
+        Toast.makeText(InjectionActivity.this, messageResId, duration).show();
+    }
+
+    /**
+     * Toast with String
+     * @param text
+     * @param duration
+     */
+    protected void toastText(String text, int duration) {
+        Toast.makeText(InjectionActivity.this, text, duration).show();
+    }
+
+    /**
+     * common onkeydown
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+        }
+        return true;
+    }
 }
