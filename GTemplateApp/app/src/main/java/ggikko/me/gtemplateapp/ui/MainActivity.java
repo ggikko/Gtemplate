@@ -43,16 +43,18 @@ public class MainActivity extends InjectionActivity {
     private float lastTranslate = 0.0f;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getLayoutRes() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void onCreate() {
         unbinder = ButterKnife.bind(this);
 
         //UI
         initUi();
         //DRAWER
         initDrawer();
-
     }
 
     //Toolbar setting
