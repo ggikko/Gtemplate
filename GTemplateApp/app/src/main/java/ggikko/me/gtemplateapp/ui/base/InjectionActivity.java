@@ -1,5 +1,7 @@
 package ggikko.me.gtemplateapp.ui.base;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -7,14 +9,17 @@ import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.media.RingtoneManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -34,6 +39,8 @@ import butterknife.Unbinder;
 import ggikko.me.gtemplateapp.GgikkoApplication;
 import ggikko.me.gtemplateapp.R;
 import ggikko.me.gtemplateapp.di.injector.ActivityInjector;
+import ggikko.me.gtemplateapp.ui.MainActivity;
+import ggikko.me.gtemplateapp.ui.welcome.SplashActivity;
 import lombok.Getter;
 
 /**
@@ -41,6 +48,9 @@ import lombok.Getter;
  */
 public abstract class InjectionActivity extends AppCompatActivity {
 
+    /**
+     * network log
+     */
     @BindString(R.string.network_popup1) String network_popup1;
     @BindString(R.string.network_popup2) String network_popup2;
     @BindString(R.string.network_popup3) String network_popup3;
@@ -52,6 +62,7 @@ public abstract class InjectionActivity extends AppCompatActivity {
     /** connectivity connectivityManager */
     private ConnectivityManager connectivityManager;
     private boolean isNetworkOn = false;
+    private boolean isInMainActivity = true;
 
     /** binder */
     private Unbinder baseUnbider;
@@ -69,10 +80,12 @@ public abstract class InjectionActivity extends AppCompatActivity {
     @Getter
     private ActivityInjector activityInjector;
 
-
+    /**
+     * interface for subactivity
+     * @return
+     */
     @LayoutRes
     protected abstract int getLayoutRes();
-
     protected abstract void onCreate();
 
     /**
@@ -267,12 +280,18 @@ public abstract class InjectionActivity extends AppCompatActivity {
      * network checking Receiver
      */
     private BroadcastReceiver networkReceiver = new BroadcastReceiver() {
+
         @Override
         public void onReceive(Context context, Intent intent) {
 
             NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
             if (isConnectedToNetwork(activeNetwork)) {
                 isNetworkOn = true;
+                if(InjectionActivity.this instanceof SplashActivity && isInMainActivity){
+                    Log.e("ggikko", "hello");
+                    isInMainActivity = false;
+                    startActivity(new Intent(InjectionActivity.this, MainActivity.class));
+                }
                 if (isConnectedToWIFI(activeNetwork)) {
                     //Toast.makeText(context, activeNetwork.getTypeName(), Toast.LENGTH_SHORT).show();
                 } else if (isConnectedToMobile(activeNetwork)) {
@@ -315,9 +334,38 @@ public abstract class InjectionActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * network checking from subactivity
+     * @return
+     */
     public boolean isNetworkOn(){
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        if(activeNetworkInfo!=null) isInMainActivity = false;
         return activeNetworkInfo != null ? true : false;
+    }
+
+    /**
+     * show notification
+     */
+    public void popNotification(){
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent, PendingIntent.FLAG_ONE_SHOT);
+
+        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("title")
+                .setContentText("message")
+                .setAutoCancel(true)
+                .setVibrate(new long[]{1000, 1000})
+                .setSound(defaultSoundUri)
+                .setContentIntent(pendingIntent);
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
     }
 
 }
